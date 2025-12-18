@@ -4,7 +4,7 @@ Welcome to Transport 2055! This is my take on what should be built within the ne
 
 This plan is heavily based on real world expansion plans, and also the work of Reece Martin of RMTransit and the Mountain Valley Express Collective Society, linked below. 
 
-https://www.youtube.com/watch?v=qZavPFZ9H1E
+https://www.youtube.com/watch?v=qZavPFZ9H1E \
 https://www.mvx.vision/
 
 
