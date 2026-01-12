@@ -40,7 +40,7 @@ function App() {
 
       <Content text={selectedTopic} />
 
-      <Map />
+      <Map onSelectTopic={setSelectedTopic} />
     </>
   )
 }
