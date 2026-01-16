@@ -1,0 +1,32 @@
+.content {
+  width: 50vw;
+  max-width: 68ch;   /* optimal reading width */
+  margin: 0 auto;
+  padding: 1rem 0;
+
+  text-align: left;
+  line-height: 1.6;
+  
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  margin-top: 2rem;
+}
+
+.content p {
+  margin: 1rem 0;
+}
+
+.content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

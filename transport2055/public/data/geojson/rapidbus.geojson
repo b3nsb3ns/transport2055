@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "r5",
+        "id": "rapidbus",
         "line": "R5",
         "color": "#26bf1b",
         "weight": 7

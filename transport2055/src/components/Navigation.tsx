@@ -1,41 +1,78 @@
-import './Navigation.css'
+import '../styles//Navigation.css'
+import { useState } from 'react'
+import { NAV_ITEMS } from '../../public/data/navigation.ts'
 
 interface NavigationProps {
-  onSelectTopic: (topic: string) => void;
+  onSelectContentId: (id: string) => void;
 }
 
-function Navigation({onSelectTopic}: NavigationProps) {
+function Navigation({onSelectContentId}: NavigationProps) {
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null)
+
+  const isOpen = (id: string) => openMenuId === id
 
   return (
-    <nav className="navbar">
-        <div className="navbar-left">
-            <a href="/" className="logo">
-            Transport 2055
-            </a>
-        </div>
-        <div className="navbar-center">
-            <ul className="nav-links">
-                <li><button onClick={() => onSelectTopic('Home content')}>Home</button></li>
-                <li><button onClick={() => onSelectTopic('SkyTrain content')}>SkyTrain</button></li>
-                <li><button onClick={() => onSelectTopic('Regional Rail content')}>Regional Rail</button></li>
-                <li><button onClick={() => onSelectTopic('RapidBus content')}>RapidBus</button></li>
-                <li><button onClick={() => onSelectTopic('ExpressBus content')}>ExpressBus</button></li>
-                <li><button onClick={() => onSelectTopic('Tram content')}>Tram</button></li>
-                <li><button onClick={() => onSelectTopic('BRT content')}>BRT</button></li>
-                <li><button onClick={() => onSelectTopic('Minimum Viable Network content')}>Minimum Viable Network</button></li>
-                <li><button onClick={() => onSelectTopic('Bonus content')}>Bonus</button></li>
-                <li><button onClick={() => onSelectTopic('Local Bus content')}>Local Bus</button></li>
-            </ul>
-        </div>
-        <div className="navbar-right">
-            <a href="/cart" className="cart-icon">
-            <i className="fas fa-shopping-cart"></i>
-            <span className="cart-count">0</span>
-            </a>
-            <a href="/account" className="user-icon">
-            <i className="fas fa-user"></i>
-            </a>
-        </div>
+    <nav className="navigation">
+      <div className="nav-brand">
+        <button
+          className="site-logo"
+          onClick={() => onSelectContentId('home')}
+        >
+          Transport 2055
+        </button>
+      </div>
+      <ul className="nav-root">
+        {NAV_ITEMS.map(item => (
+          <li
+            key={item.id}
+            className="nav-item"
+            onMouseEnter={() => setOpenMenuId(item.id)}
+            onMouseLeave={() => setOpenMenuId(null)}
+          >
+            <div className="nav-parent">
+              {/* Parent content button */}
+              <button
+                className="nav-link"
+                onClick={() => onSelectContentId(item.contentId)}
+              >
+                {item.label}
+              </button>
+
+              {/* Submenu toggle (mainly for mobile) */}
+              {item.children && (
+                <button
+                  className="nav-caret"
+                  aria-haspopup="menu"
+                  aria-expanded={isOpen(item.id)}
+                  onClick={() =>
+                    setOpenMenuId(isOpen(item.id) ? null : item.id)
+                  }
+                >
+                  ▾
+                </button>
+              )}
+            </div>
+
+            {/* Submenu */}
+            {item.children && isOpen(item.id) && (
+              <ul className="dropdown">
+                {item.children.map(child => (
+                  <li key={child.id}>
+                    <button
+                      onClick={() => {
+                        onSelectContentId(child.id)
+                        setOpenMenuId(null)
+                      }}
+                    >
+                      {child.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
     </nav>
   )
 }

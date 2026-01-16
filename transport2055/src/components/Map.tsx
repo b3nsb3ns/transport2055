@@ -1,4 +1,4 @@
-import './Map.css'
+import '../styles//Map.css'
 import 'leaflet/dist/leaflet.css'
 import { useState, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
@@ -26,8 +26,8 @@ function TransitLayer({
       })}
       onEachFeature={(feature, layer) => {
         layer.on('click', () => {
-          const lineName = feature.properties?.line
-          if (lineName) onSelectTopic(lineName)
+          const lineId = feature.properties?.id
+          if (lineId) onSelectTopic(lineId)
         })
       }}
     />
