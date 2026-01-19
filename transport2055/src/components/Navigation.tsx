@@ -1,6 +1,6 @@
 import '../styles//Navigation.css'
 import { useState } from 'react'
-import { NAV_ITEMS } from '../../public/data/navigation.ts'
+import { NAV_ITEMS } from '../data/navigation.ts'
 
 interface NavigationProps {
   onSelectContentId: (id: string) => void;

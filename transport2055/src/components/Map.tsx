@@ -1,5 +1,6 @@
 import '../styles//Map.css'
 import 'leaflet/dist/leaflet.css'
+import { TRANSIT_LAYERS } from '../data/maplayers.ts'
 import { useState, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
 import type { FeatureCollection, LineString } from 'geojson'
@@ -35,20 +36,26 @@ function TransitLayer({
 }
 
 function Map({onSelectTopic}: MapProps) {
-  const [skytrain, setSkytrain] = useState<FeatureCollection<LineString> | null>(null)
-  const [rapidbus, setRapidbus] = useState<FeatureCollection<LineString> | null>(null)
+  const [layers, setLayers] = useState<Record<string, FeatureCollection<LineString>>>({})
 
   useEffect(() => {
-    fetch('/data/geojson/skytrain.geojson') // replace with S3/Firebase URL later
-      .then(res => res.json())
-      .then((data: FeatureCollection<LineString>) => setSkytrain(data))
-      .catch(err => console.error('Failed to load SkyTrain GeoJSON', err))
-
-      fetch('/data/geojson/rapidbus.geojson')
-        .then(res => res.json())
-        .then((data: FeatureCollection<LineString>) => setRapidbus(data))
-        .catch(err => console.error('Failed to load RapidBus GeoJSON', err))
+    Promise.all(
+      TRANSIT_LAYERS.map(layer =>
+        fetch(layer.url)
+          .then(res => res.json())
+          .then(data => ({ id: layer.id, data }))
+      )
+    )
+      .then(results => {
+        const layerMap: Record<string, FeatureCollection<LineString>> = {}
+        results.forEach(({ id, data }) => {
+          layerMap[id] = data
+        })
+        setLayers(layerMap)
+      })
+      .catch(err => console.error('Failed to load transit layers', err))
   }, [])
+
 
   return (
     <div>
@@ -67,19 +74,15 @@ function Map({onSelectTopic}: MapProps) {
               A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
-        {skytrain && (
-          <TransitLayer
-            data={skytrain}
-            onSelectTopic={onSelectTopic}
-            defaultColor="#0055ff"
-          />
-        )}
-        {rapidbus && (
-          <TransitLayer
-            data={rapidbus}
-            onSelectTopic={onSelectTopic}
-            defaultColor="#26bf1b"
-          />
+        {TRANSIT_LAYERS.map(layer =>
+          layers[layer.id] ? (
+            <TransitLayer
+              key={layer.id}
+              data={layers[layer.id]}
+              onSelectTopic={onSelectTopic}
+              defaultColor={layer.defaultColor}
+            />
+          ) : null
         )}
     </MapContainer>
     </div>

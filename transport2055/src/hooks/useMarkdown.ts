@@ -8,6 +8,10 @@ export function useMarkdown(topic: string) {
   useEffect(() => {
     let cancelled = false
 
+    // CLEAR previous state when topic changes
+    setContent(null)
+    setError(null)
+
     loadMarkdown(topic)
       .then(text => {
         if (!cancelled) setContent(text)
