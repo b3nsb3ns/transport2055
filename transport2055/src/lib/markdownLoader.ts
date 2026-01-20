@@ -14,7 +14,7 @@ export async function loadMarkdown(id: string): Promise<string> {
 
   if (!cache.has(id)) {
     // const promise = fetch(`${BASE_URL}/data/content/${filename}`)
-    const promise = fetch(`/data/content/${filename}`)
+    const promise = fetch(`${import.meta.env.BASE_URL}data/content/${filename}`)
       .then(res => {
         if (!res.ok) {
           throw new Error(`Failed to load ${filename}`)
