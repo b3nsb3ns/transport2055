@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_CONTENT_BASE_URL ?? ''
+// const BASE_URL = import.meta.env.VITE_CONTENT_BASE_URL ?? ''
 
 let manifestPromise: Promise<Record<string, string>> | null = null
 

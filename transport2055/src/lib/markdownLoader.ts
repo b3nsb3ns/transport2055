@@ -1,6 +1,6 @@
 import { loadManifest } from './manifestLoader.ts'
 
-const BASE_URL = import.meta.env.VITE_CONTENT_BASE_URL ?? ''
+// const BASE_URL = import.meta.env.VITE_CONTENT_BASE_URL ?? ''
 
 const cache = new Map<string, Promise<string>>()
 
