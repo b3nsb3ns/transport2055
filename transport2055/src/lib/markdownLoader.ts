@@ -1,6 +1,6 @@
 import { loadManifest } from './manifestLoader.ts'
 
-// const BASE_URL = import.meta.env.VITE_CONTENT_BASE_URL ?? ''
+const STORAGE_BASE_URL = import.meta.env.VITE_CLOUDFRONT_BASE_URL ?? ''
 
 const cache = new Map<string, Promise<string>>()
 
@@ -13,8 +13,8 @@ export async function loadMarkdown(id: string): Promise<string> {
   }
 
   if (!cache.has(id)) {
-    // const promise = fetch(`${BASE_URL}/data/content/${filename}`)
-    const promise = fetch(`${import.meta.env.BASE_URL}data/content/${filename}`)
+    const promise = fetch(`${STORAGE_BASE_URL}/data/content/${filename}`)
+    // const promise = fetch(`${import.meta.env.BASE_URL}data/content/${filename}`)
       .then(res => {
         if (!res.ok) {
           throw new Error(`Failed to load ${filename}`)
