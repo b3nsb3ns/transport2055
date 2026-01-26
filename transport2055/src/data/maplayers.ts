@@ -4,13 +4,13 @@ export const TRANSIT_LAYERS = [
   {
     id: 'skytrain',
     // url: `${import.meta.env.BASE_URL}data/geojson/skytrain.geojson`,
-    url: `${STORAGE_BASE_URL}/data/geojson/skytrain/skytrain.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/skytrain/skytrain-260125-0.geojson`,
     defaultColor: '#0055ff',
   },
   {
     id: 'rapidbus',
     // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
-    url: `${STORAGE_BASE_URL}/data/geojson/rapidbus/rapidbus.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/rapidbus/rapidbus-260125-0.geojson`,
     defaultColor: '#26bf1b',
   },
 ]
