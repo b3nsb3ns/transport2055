@@ -31,6 +31,8 @@ jobs:
       # Sync public/data to S3
       - name: Upload public/data to S3
         run: |
+          cd transport2055
+
           if [ -d "public/data" ]; then
             for folder in public/data/*; do
               if [ -d "$folder" ]; then
@@ -43,4 +45,6 @@ jobs:
             done
           else
             echo "No public/data folder found, skipping S3 sync."
+            ls -la
           fi
+
