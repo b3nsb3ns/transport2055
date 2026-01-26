@@ -33,17 +33,7 @@ jobs:
         run: |
           cd transport2055
 
-          if [ -d "public/data" ]; then
-            for folder in public/data/*; do
-              if [ -d "$folder" ]; then
-                foldername=${folder#public/data/}
-                echo "Syncing $folder → s3://transport-2055-project/data/$foldername"
-                aws s3 sync "$folder" "s3://transport-2055-project/data/$foldername" \
-                  --exact-timestamps \
-              fi
-            done
-          else
-            echo "No public/data folder found, skipping S3 sync."
-            ls -la
-          fi
+          aws s3 sync public/data s3://transport-2055-project/data \
+            --exact-timestamps
+
 
