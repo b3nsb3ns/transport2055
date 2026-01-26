@@ -40,7 +40,6 @@ jobs:
                 echo "Syncing $folder → s3://transport-2055-project/data/$foldername"
                 aws s3 sync "$folder" "s3://transport-2055-project/data/$foldername" \
                   --exact-timestamps \
-                  --acl public-read
               fi
             done
           else
