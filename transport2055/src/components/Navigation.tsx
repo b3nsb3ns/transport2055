@@ -1,5 +1,5 @@
 import '../styles//Navigation.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NAV_ITEMS } from '../data/navigation.ts'
 
 interface NavigationProps {
@@ -8,11 +8,42 @@ interface NavigationProps {
 
 function Navigation({onSelectContentId}: NavigationProps) {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   const isOpen = (id: string) => openMenuId === id
 
+  const SCROLL_DEADZONE = 8
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentScrollY = window.scrollY
+      const delta = currentScrollY - lastScrollY
+
+      // Ignore tiny trackpad jitter
+      if (Math.abs(delta) < SCROLL_DEADZONE) return
+
+      // Always show near top
+      if (currentScrollY < 10) {
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY) {
+        // scrolling down
+        setIsVisible(false)
+        setOpenMenuId(null) // close menus when hiding
+      } else {
+        // scrolling up
+        setIsVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [lastScrollY])
+
   return (
-    <nav className="navigation">
+    <nav className={`navigation ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="nav-brand">
         <button
           className="site-logo"
