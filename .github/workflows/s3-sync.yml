@@ -33,6 +33,5 @@ jobs:
         run: |
           cd transport2055
 
-          aws s3 sync public/data s3://transport-2055-project/data
-
+          aws s3 sync public/data s3://transport-2055-project/data --size-only
 
