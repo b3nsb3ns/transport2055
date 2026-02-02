@@ -10,7 +10,13 @@ export const TRANSIT_LAYERS = [
   {
     id: 'rapidbus',
     // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
-    url: `${STORAGE_BASE_URL}/data/geojson/rapidbus/rapidbus-260125-0.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/rapidbus/rapidbus-260201-0.geojson`,
+    defaultColor: '#26bf1b',
+  },
+  {
+    id: 'regionalrail',
+    // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/regionalrail/regionalrail-260131-0.geojson`,
     defaultColor: '#26bf1b',
   },
 ]

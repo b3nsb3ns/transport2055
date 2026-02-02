@@ -23,7 +23,8 @@ function TransitLayer({
       data={data}
       style={(feature) => ({
         color: feature?.properties?.color || defaultColor,
-        weight: feature?.properties?.weight || 3
+        weight: feature?.properties?.weight || 3,
+        dashArray: feature?.properties?.dashArray || null
       })}
       onEachFeature={(feature, layer) => {
         layer.on('click', () => {
