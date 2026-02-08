@@ -42,6 +42,12 @@ export const TRANSIT_LAYERS = [
     // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
     url: `${STORAGE_BASE_URL}/data/geojson/skybus/skybus-260206-0.geojson`,
     defaultColor: '#26bf1b',
+  },
+  {
+    id: 'bonus',
+    // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/bonus/bonus-260207-0.geojson`,
+    defaultColor: '#26bf1b',
   }
 ]
 
