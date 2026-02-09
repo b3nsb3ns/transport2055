@@ -4,7 +4,7 @@ export const TRANSIT_LAYERS = [
   {
     id: 'skytrain',
     // url: `${import.meta.env.BASE_URL}data/geojson/skytrain.geojson`,
-    url: `${import.meta.env.BASE_URL}data/geojson/skytrain/skytrain-260203-0.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/skytrain/skytrain-260203-0.geojson`,
     defaultColor: '#0055ff',
   },
   {
@@ -46,7 +46,7 @@ export const TRANSIT_LAYERS = [
   {
     id: 'bonus',
     // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
-    url: `${import.meta.env.BASE_URL}data/geojson/bonus/bonus-260207-0.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/bonus/bonus-260207-0.geojson`,
     defaultColor: '#26bf1b',
   }
 ]
