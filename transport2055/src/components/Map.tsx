@@ -1,5 +1,6 @@
 import '../styles//Map.css'
 import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
 import { TRANSIT_LAYERS } from '../data/maplayers.ts'
 import { useState, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
@@ -10,30 +11,72 @@ interface MapProps {
 }
 
 function TransitLayer({
-  data,
-  onSelectTopic,
-  defaultColor,
-}: {
-  data: FeatureCollection<LineString>
-  onSelectTopic: (topic: string) => void
-  defaultColor: string
-}) {
+    data,
+    onSelectTopic,
+    defaultColor,
+  }: {
+    data: FeatureCollection<LineString>
+    onSelectTopic: (topic: string) => void
+    defaultColor: string
+  }) {
   return (
-    <GeoJSON
-      data={data}
-      style={(feature) => ({
-        color: feature?.properties?.color || defaultColor,
-        weight: feature?.properties?.weight || 3,
-        dashArray: feature?.properties?.dashArray || null,
-        lineCap: feature?.properties?.lineCap || null
-      })}
-      onEachFeature={(feature, layer) => {
-        layer.on('click', () => {
+    <>
+      <GeoJSON
+        data={data}
+        style={(feature) => ({
+          color: feature?.properties?.color || defaultColor,
+          weight: feature?.properties?.weight || 3,
+          dashArray: feature?.properties?.dashArray || null,
+          lineCap: feature?.properties?.lineCap || null,
+          interactive: false
+        })}
+      />
+
+      // render invisible, wider lines for click/tapability
+      <GeoJSON
+        data={data}
+        style={
+          {
+            color: '#000',
+            weight: 11,       
+            opacity: 0,       
+            interactive: true
+          }
+        }
+        onEachFeature={(feature, layer) => {
+          const path = layer as L.Path
+
           const lineId = feature.properties?.id
-          if (lineId) onSelectTopic(lineId)
-        })
-      }}
-    />
+          const name = feature.properties?.line
+          const colour = feature.properties?.color
+
+          if (name) {
+            layer.bindTooltip(name, {
+              sticky: true,       // follows cursor
+              direction: 'top',
+              className: 'transit-tooltip',
+              opacity: 0.9
+            })
+          }
+
+          layer.on({
+            mouseover: () => {
+              path.setStyle({ 
+                opacity: 0.35,
+                color: colour,
+                weight: 11
+               })
+            },
+            mouseout: () => {
+              path.setStyle({ opacity: 0 })
+            },
+            click: () => {
+              if (lineId) onSelectTopic(lineId)
+            },
+          })
+        }}
+      />
+    </>
   )
 }
 

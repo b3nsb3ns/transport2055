@@ -10,6 +10,7 @@ function Navigation({onSelectContentId}: NavigationProps) {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [navExpanded, setNavExpanded] = useState(true)
 
   const isOpen = (id: string) => openMenuId === id
 
@@ -26,6 +27,7 @@ function Navigation({onSelectContentId}: NavigationProps) {
       // Always show near top
       if (currentScrollY < 10) {
         setIsVisible(true)
+        setNavExpanded(true)
       } else if (currentScrollY > lastScrollY) {
         // scrolling down
         setIsVisible(false)
@@ -46,13 +48,24 @@ function Navigation({onSelectContentId}: NavigationProps) {
     <nav className={`navigation ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="nav-brand">
         <button
+          className="nav-toggle"
+          aria-expanded={navExpanded}
+          aria-label="Toggle navigation options"
+          onClick={() => {
+            setNavExpanded(v => !v)
+            setOpenMenuId(null)
+          }}
+        >
+          {navExpanded ? '▴' : '▾'}
+        </button>
+        <button
           className="site-logo"
           onClick={() => onSelectContentId('home')}
         >
           Transport 2055
         </button>
       </div>
-      <ul className="nav-root">
+      <ul className={`nav-root ${navExpanded ? 'expanded' : 'collapsed'}`}>
         {NAV_ITEMS.map(item => (
           <li
             key={item.id}

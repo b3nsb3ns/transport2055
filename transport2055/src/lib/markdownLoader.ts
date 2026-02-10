@@ -12,7 +12,7 @@ export async function loadMarkdown(id: string): Promise<string> {
     throw new Error(`Unknown markdown id: ${id}`)
   }
 
-  if (!cache.has(id)) {
+  if (!cache.has(pathname)) {
     const promise = fetch(`${STORAGE_BASE_URL}/data/content/${pathname}`)
     // const promise = fetch(`${import.meta.env.BASE_URL}data/content/${pathname}`)
       .then(res => {
@@ -23,11 +23,11 @@ export async function loadMarkdown(id: string): Promise<string> {
       })
       .catch(err => {
         // Ensure failures do not poison the cache
-        cache.delete(id)
+        cache.delete(pathname)
         throw err
       })
 
-    cache.set(id, promise)
+    cache.set(pathname, promise)
   }
-  return cache.get(id)!
+  return cache.get(pathname)!
 }

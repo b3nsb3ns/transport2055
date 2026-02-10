@@ -49,8 +49,24 @@
   margin: 0;
 }
 
+.nav-root.collapsed {
+  display: none;
+}
+
+.nav-root.expanded {
+  display: flex;
+}
+
 .nav-item {
   position: relative;
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
 }
 
 .dropdown {
