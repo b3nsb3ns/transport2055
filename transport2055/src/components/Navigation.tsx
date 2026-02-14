@@ -56,13 +56,14 @@ function Navigation({onSelectContentId}: NavigationProps) {
             setOpenMenuId(null)
           }}
         >
-          {navExpanded ? '▴' : '▾'}
+          {navExpanded ? '☰' : '☰'}
         </button>
         <button
           className="site-logo"
           onClick={() => onSelectContentId('home')}
         >
-          Transport 2055
+          Transport 
+          <img src={`${import.meta.env.BASE_URL}2055.svg`} alt="2055"></img>
         </button>
       </div>
       <ul className={`nav-root ${navExpanded ? 'expanded' : 'collapsed'}`}>

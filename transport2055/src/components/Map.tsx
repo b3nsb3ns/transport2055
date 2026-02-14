@@ -32,7 +32,7 @@ function TransitLayer({
         })}
       />
 
-      // render invisible, wider lines for click/tapability
+      {/*render invisible, wider lines for click/tapability*/}
       <GeoJSON
         data={data}
         style={

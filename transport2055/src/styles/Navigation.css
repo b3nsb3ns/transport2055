@@ -41,6 +41,12 @@
   cursor: pointer;
 }
 
+.site-logo img {
+  height: 1em;
+  width: auto;
+  transform: translateX(0.14em) translateY(0.12em);
+}
+
 .nav-root {
   display: flex;
   gap: 1.5rem;
