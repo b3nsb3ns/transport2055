@@ -9,14 +9,19 @@ interface NavigationProps {
 function Navigation({onSelectContentId}: NavigationProps) {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null)
   const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
   const [navExpanded, setNavExpanded] = useState(true)
 
   const isOpen = (id: string) => openMenuId === id
 
-  const SCROLL_DEADZONE = 8
-
   useEffect(() => {
+    let lastScrollY = window.scrollY
+    let accumulated = 0
+    let lastDirection: 'up' | 'down' | null = null
+
+    const HIDE_THRESHOLD = 80 // scroll down 80 pixels to hide nav bar
+    const SHOW_THRESHOLD = 60 // scroll up 60 pixels to make nav bar reappear
+    const SCROLL_DEADZONE = 8
+
     const onScroll = () => {
       const currentScrollY = window.scrollY
       const delta = currentScrollY - lastScrollY
@@ -24,25 +29,38 @@ function Navigation({onSelectContentId}: NavigationProps) {
       // Ignore tiny trackpad jitter
       if (Math.abs(delta) < SCROLL_DEADZONE) return
 
+      const direction = delta > 0 ? 'down' : 'up'
+
+      // Reset accumulator if direction changes
+      if (direction !== lastDirection){
+        accumulated = 0
+        lastDirection = direction
+      }
+
+      accumulated += Math.abs(delta)
+
       // Always show near top
       if (currentScrollY < 10) {
         setIsVisible(true)
         setNavExpanded(true)
-      } else if (currentScrollY > lastScrollY) {
+        accumulated = 0
+      } else if (direction == 'down' && accumulated > HIDE_THRESHOLD) {
         // scrolling down
         setIsVisible(false)
         setOpenMenuId(null) // close menus when hiding
-      } else {
+        accumulated = 0
+      } else if (direction == 'up' && accumulated > SHOW_THRESHOLD) {
         // scrolling up
         setIsVisible(true)
+        accumulated = 0
       }
 
-      setLastScrollY(currentScrollY)
+      lastScrollY = currentScrollY
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [lastScrollY])
+  }, [])
 
   return (
     <nav className={`navigation ${isVisible ? 'visible' : 'hidden'}`}>
@@ -93,7 +111,7 @@ function Navigation({onSelectContentId}: NavigationProps) {
                     setOpenMenuId(isOpen(item.id) ? null : item.id)
                   }
                 >
-                  ▾
+                  ▼
                 </button>
               )}
             </div>

@@ -3,11 +3,24 @@ import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import { TRANSIT_LAYERS } from '../data/maplayers.ts'
 import { useState, useEffect } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
 import type { FeatureCollection, LineString } from 'geojson'
+import { useMap } from 'react-leaflet'
+import type { Map as LeafletMap } from 'leaflet'
 
 interface MapProps {
   onSelectTopic: (topic: string) => void;
+  setMapRef: (map: L.Map) => void;
+}
+
+function MapRefSetter({ setMapRef }: { setMapRef: (map: LeafletMap) => void }) {
+  const map = useMap()
+
+  useEffect(() => {
+    setMapRef(map)
+  }, [map, setMapRef])
+
+  return null
 }
 
 function TransitLayer({
@@ -80,7 +93,7 @@ function TransitLayer({
   )
 }
 
-function Map({onSelectTopic}: MapProps) {
+function Map({onSelectTopic, setMapRef}: MapProps) {
   const [layers, setLayers] = useState<Record<string, FeatureCollection<LineString>>>({})
 
   useEffect(() => {
@@ -103,22 +116,24 @@ function Map({onSelectTopic}: MapProps) {
 
 
   return (
-    <div>
     <MapContainer 
         center={[49.1811172, -122.9266192]} 
-        zoom={10} 
-        scrollWheelZoom={false}
-        style={{ height: '400px', width: '100%' }}
+        zoom={10}
+        scrollWheelZoom={true}
+        style={{ height: '100%', width: '100%' }}
         >
+
+        <MapRefSetter setMapRef={setMapRef} />
+
         <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[49.1811172, -122.9266192]}>
+        {/* <Marker position={[49.1811172, -122.9266192]}>
           <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
-        </Marker>
+        </Marker> */}
         {TRANSIT_LAYERS.map(layer =>
           layers[layer.id] ? (
             <TransitLayer
@@ -130,7 +145,6 @@ function Map({onSelectTopic}: MapProps) {
           ) : null
         )}
     </MapContainer>
-    </div>
   )
 }
 
