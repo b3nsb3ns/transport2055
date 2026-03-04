@@ -7,6 +7,8 @@ import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
 import type { FeatureCollection, LineString } from 'geojson'
 import { useMap } from 'react-leaflet'
 import type { Map as LeafletMap } from 'leaflet'
+import { LayersControl } from 'react-leaflet'
+import { LayerGroup } from 'react-leaflet'
 
 interface MapProps {
   onSelectTopic: (topic: string) => void;
@@ -33,7 +35,7 @@ function TransitLayer({
     defaultColor: string
   }) {
   return (
-    <>
+    <LayerGroup>
       <GeoJSON
         data={data}
         style={(feature) => ({
@@ -89,7 +91,7 @@ function TransitLayer({
           })
         }}
       />
-    </>
+    </LayerGroup>
   )
 }
 
@@ -126,24 +128,31 @@ function Map({onSelectTopic, setMapRef}: MapProps) {
         <MapRefSetter setMapRef={setMapRef} />
 
         <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* <Marker position={[49.1811172, -122.9266192]}>
           <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker> */}
-        {TRANSIT_LAYERS.map(layer =>
-          layers[layer.id] ? (
-            <TransitLayer
-              key={layer.id}
-              data={layers[layer.id]}
-              onSelectTopic={onSelectTopic}
-              defaultColor={layer.defaultColor}
-            />
-          ) : null
-        )}
+        <LayersControl position='topright'>
+          {TRANSIT_LAYERS.map(layer =>
+            layers[layer.id] ? (
+              <LayersControl.Overlay
+                  key={layer.id}
+                  name={layer.label}
+                  checked={!layer.hiddenByDefault}
+              >
+                <TransitLayer
+                  data={layers[layer.id]}
+                  onSelectTopic={onSelectTopic}
+                  defaultColor={layer.defaultColor}
+                />
+              </LayersControl.Overlay>
+            ) : null
+          )}
+        </LayersControl>
     </MapContainer>
   )
 }

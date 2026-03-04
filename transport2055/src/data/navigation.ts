@@ -11,8 +11,7 @@ export const NAV_ITEMS = [
       { id: 's-crosstown', label: 'South Crosstown'},
       { id: 'kgb', label: 'King George Boulevard'},
       { id: 'r6', label: 'R6 Rail'},
-      { id: 's-central', label: 'South Central'},
-      { id: 'daviepacific', label: 'Davie-Pacific'}
+      { id: 's-central', label: 'South Central'}
     ],
   },
   {
@@ -27,7 +26,9 @@ export const NAV_ITEMS = [
       { id: 'canadaway', label: 'Canada Way'},
       { id: 'austin', label: 'Austin Ave'},
       { id: '152st', label: '152 St-Coq'},
-      { id: 'burrardrapidbus', label: 'Burrard St'}
+      { id: 'burrardrapidbus', label: 'Burrard St'},
+      { id: 'dtorbit', label: 'Downtown Orbital'}, 
+      { id: 'marine', label: 'Marine Dr/Wy'}
     ],
   },
   {
@@ -36,9 +37,8 @@ export const NAV_ITEMS = [
     contentId: 'regionalrail',
     children: [
       { id: 'fvx', label: 'Fraser Valley Express' },
-      { id: 'wce', label: 'West Coast Express'},
-      { id: 'twx', label: 'Delta+Tsawwassen'},
-      { id: 'sbx', label: 'South Burrard'}
+      { id: 'wce', label: 'West Coast Express'}, 
+      { id: 'tcx', label: 'Tri-Cities Express'}
     ],
   },
   {
@@ -48,8 +48,8 @@ export const NAV_ITEMS = [
     children: [
       { id: 'e1', label: 'Surrey-Richmond' },
       { id: 'e2', label: 'Surrey-Delta/Richmond' },
-      { id: 'e3', label: 'White Rock-Delta' },
-      { id: 'e4', label: 'Ladner-Tsawwassen' },
+      { id: 'e3', label: 'White Rock' },
+      { id: 'e4', label: 'Richmond-Tsawwassen' },
       { id: 'e5', label: 'North Shore' },
       { id: 'e6', label: 'Langley-Fraser Valley' },
       { id: 'e7', label: 'Langley-Newton' },
@@ -68,17 +68,24 @@ export const NAV_ITEMS = [
   },
   {
     id: 'bonus',
-    label: 'Bonus',
+    label: 'Bonus Phase 1',
     contentId: 'bonus',
     children: [
+      { id: 'twx', label: 'Delta+Tsawwassen Express'},
       { id: 'kgbextend', label: 'KGB Extension' },
-      { id: 'davie-pacificextend', label: 'Davie-Pacific Extension'},
-      { id: 'millenniumextend', label: 'Millennium Extension'},
-      { id: 'kensington', label: 'Inlet Extension'},
-      { id: 'fvxextend', label: 'FVX Extension'},
-      { id: 'twxextend', label: 'TWX Extension'},
-      { id: 'r6extend', label: 'R6 Extension'},
-      { id: 'nshwy1', label: 'North Shore Hwy 1 Skytrain'},
+      { id: 'chilliwack', label: 'FVX Chilliwack'},
+      { id: 'sbx', label: 'South Burrard Express'},
+      { id: 'r6extend', label: 'R6 Extension'}
+    ],
+  },
+  {
+    id: 'bonus2',
+    label: 'Bonus Phase 2',
+    contentId: 'bonus',
+    children: [
+      { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
+      { id: 'davie-pacificrail', label: 'Davie-Pacific Rail'},
+      { id: 'kensington', label: 'Hastings Skytrain Extension'},
       { id: 'cascades', label: 'Amtrak Cascades'},
       { id: 'ssx', label: 'Sea-to-Sky Express'},
       { id: 'oak-abrt', label: 'Oak Autonomous BRT'}
