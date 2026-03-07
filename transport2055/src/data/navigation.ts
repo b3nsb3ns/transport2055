@@ -79,7 +79,7 @@ export const NAV_ITEMS = [
   {
     id: 'bonus2',
     label: 'Bonus Phase 2',
-    contentId: 'bonus',
+    contentId: 'bonus2',
     children: [
       { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
       { id: 'davie-pacificrail', label: 'Davie-Pacific Rail'},
