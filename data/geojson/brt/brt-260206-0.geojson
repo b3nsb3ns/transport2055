@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "lhbrt",
+        "id": "brt",
         "line": "Langley - Haney Place",
         "color": "#4b3086",
         "weight": 2
@@ -21,7 +21,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "kgbbrt",
+        "id": "brt",
         "line": "King George Boulevard",
         "color": "#3c91e6",
         "weight": 2
