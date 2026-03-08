@@ -44,15 +44,15 @@
       "type": "Feature",
       "properties": {
         "id": "kensington",
-        "line": "Hastings Branch Kensington Extension",
-        "color": "#9a2dc2",
+        "line": "Hastings Kensington Extension",
+        "color": "#077872",
         "weight": 3,
         "dashArray": "3,3"
       },
       "geometry": {
         "coordinates": [
           [
-            [-123.0030011047683,49.28133931899916],[-122.97012225026424,49.280642881290134]
+            [-123.0265153,49.2811882],[-123.0030011047683,49.28133931899916],[-122.97012225026424,49.280642881290134]
           ]
         ],
         "type": "MultiLineString"
