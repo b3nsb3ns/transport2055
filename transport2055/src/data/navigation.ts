@@ -7,7 +7,7 @@ export const NAV_ITEMS = [
       { id: 'expo', label: 'Expo Line' },
       { id: 'millennium', label: 'Millennium Line' },
       { id: 'canada', label: 'Canada Line'},
-      { id: 'inlet', label: 'Inlet Line'},
+      { id: 'inlet', label: 'Inlet+Hastings Line'},
       { id: 's-crosstown', label: 'South Crosstown'},
       { id: 'kgb', label: 'King George Boulevard'},
       { id: 'r6', label: 'R6 Rail'},
