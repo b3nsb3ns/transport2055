@@ -33,6 +33,10 @@
     "wr": "expressbus/wr/wr-260305-0.md",
     "rt": "expressbus/rt/rt-260305-0.md",
     "langley": "expressbus/langley/langley-260305-0.md",
+    "sharedtunnel": "expressbus/sharedtunnel-260314-0.md",
+    "shared99": "expressbus/shared99-260314-0.md",
+    "shared91": "expressbus/shared91-260314-0.md",
+    "sharedbridgeport": "expressbus/sharedbridgeport-260314-0.md",
 
     "misc": "misc/misc-260305-0.md",
     "bus": "misc/bus/bus-260305-0.md",

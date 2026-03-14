@@ -28,7 +28,7 @@ export const NAV_ITEMS = [
       { id: 'austin', label: 'Austin Ave'},
       { id: '152st', label: 'Surrey-Coquitlam'},
       { id: 'downtown', label: 'Downtown'},
-      { id: 'marine', label: 'Marine Dr/Wy'}
+      { id: 'marine', label: 'Burrard-Arbutus-Marine'}
     ],
   },
   {
@@ -37,8 +37,9 @@ export const NAV_ITEMS = [
     contentId: 'regionalrail',
     children: [
       { id: 'fvx', label: 'Fraser Valley Express' },
-      { id: 'wce', label: 'West Coast Express'}, 
-      { id: 'tcx', label: 'Tri-Cities Express'}
+      { id: 'wce', label: 'West Coast Express'},
+      { id: 'tcx', label: 'Tri-Cities Express'},
+      { id: 'sbx', label: 'South Burrard Express'}
     ],
   },
   {
@@ -72,7 +73,6 @@ export const NAV_ITEMS = [
       { id: 'twx', label: 'Delta+Tsawwassen Express'},
       { id: 'kgbextend', label: 'KGB Extension' },
       { id: 'chilliwack', label: 'FVX Chilliwack'},
-      { id: 'sbx', label: 'South Burrard Express'},
       { id: 'r6extend', label: 'R6 Extension'}
     ],
   },
