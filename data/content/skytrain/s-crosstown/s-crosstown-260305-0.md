@@ -1,3 +1,0 @@
-## South-Crosstown SkyTrain Line
-
-This line aims to replace the R4 RapidBus and 49 bus as the main way to traverse this busy corridor. Seeing as the R4 and 49 are the second and third busiest bus services, a SkyTrain line to connect the Burrard peninsula from east \(Metrotown\) to west \(UBC\) makes sense not just to increase capacity and provide a better passenger experience, but also allows TransLink to divert buses that otherwise would be used to serve this corridor elsewhere. 
