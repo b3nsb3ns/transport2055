@@ -27,6 +27,7 @@
     "fvx": "regionalrail/fvx/fvx-260305-0.md",
     "wce": "regionalrail/wce/wce-260305-0.md",
     "tcx": "regionalrail/tcx/tcx-260305-0.md",
+    "sbx": "regionalrail/sbx/sbx-260315-0.md",
 
     "expressbus": "expressbus/expressbus-260305-0.md",
     "sew": "expressbus/sew/sew-260305-0.md",
@@ -48,7 +49,6 @@
     "twx": "bonus/twx/twx-260305-0.md",
     "kgbextend": "bonus/kgbextend/kgbextend-260305-0.md",
     "chilliwack": "bonus/chilliwack/chilliwack-260305-0.md",
-    "sbx": "bonus/sbx/sbx-260305-0.md",
     "r6extend": "bonus/r6extend/r6extend-260305-0.md",
 
     "bonus2": "bonus2/bonus2-260305-0.md",
