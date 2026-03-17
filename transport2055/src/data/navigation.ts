@@ -73,7 +73,9 @@ export const NAV_ITEMS = [
       { id: 'twx', label: 'Delta+Tsawwassen Express'},
       { id: 'kgbextend', label: 'KGB Extension' },
       { id: 'chilliwack', label: 'FVX Chilliwack'},
-      { id: 'r6extend', label: 'R6 Extension'}
+      { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
+      { id: 'r6extend', label: 'R6 Extension'},
+      { id: 'tram', label: 'Tram Extension'}
     ],
   },
   {
@@ -81,7 +83,6 @@ export const NAV_ITEMS = [
     label: 'Bonus Phase 2',
     contentId: 'bonus2',
     children: [
-      { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
       { id: 'davie-pacificrail', label: 'Davie-Pacific Rail'},
       { id: 'kensington', label: 'Hastings Skytrain Extension'},
       { id: 'cascades', label: 'Amtrak Cascades'},
