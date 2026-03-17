@@ -30,12 +30,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ca-west-1
 
-      # Sync public/data to S3
-      - name: Upload public/data to S3
+      # Sync data to S3
+      - name: Upload data to S3
         run: |
           cd transport2055
 
-          aws s3 sync public/data s3://transport-2055-project/data --size-only
+          aws s3 sync data s3://transport-2055-project/data --size-only
 
       # Invalidate Cloudfront Cache when new data detected
       - name: Invalidate Cloudfront cache
