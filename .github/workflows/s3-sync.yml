@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'transport2055/public/data/**'
+      - 'transport2055/data/**'
 
 jobs:
   sync-s3:
