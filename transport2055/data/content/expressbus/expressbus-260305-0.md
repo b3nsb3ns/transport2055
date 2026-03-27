@@ -4,4 +4,6 @@
 
 Much like the other bus-based services outlined in this plan, this service will have features that tell transit users that this is a fast, frequent, and ultimately, higher-order service that can allow them to reach destinations in a timely manner. These services feature double decker buses, like the current Alexander Dennis Enviro 500 model in use by TransLink, or low floor coaches, to be the primary vehicle for this service,  with information screens at stops/stations, run every 15 minutes at minimum. This service aims to use highways to the best of their potential, and use them as part of the mass transit network. 
 
+"ExpressBus" is my working name for such as service, as I believe a name that allows users to instinctively know what this service does will allow for less friction in communication, bring forth prestige, and set expectations that this is an important service. Something like "FraserLink", perhaps?
+
 Much of this layer is inspired by [RMTransit's video on highway transit. ](https://www.youtube.com/watch?v=ApFp-EF_wsI)
