@@ -10,7 +10,6 @@ export const NAV_ITEMS = [
       { id: 'inlet', label: 'Inlet+Hastings Line'},
       { id: 's-crosstown', label: 'South Crosstown'},
       { id: 'kgb', label: 'King George Boulevard'},
-      { id: 'r6', label: 'R6 Rail'},
       { id: 's-central', label: 'South Central'}
     ],
   },
@@ -26,7 +25,6 @@ export const NAV_ITEMS = [
       { id: '6thave', label: 'New West Crosstown'},
       { id: 'canadaway', label: 'Canada Way'},
       { id: 'austin', label: 'Austin Ave'},
-      { id: '152st', label: 'Surrey-Coquitlam'},
       { id: 'downtown', label: 'Downtown'},
       { id: 'marine', label: 'Burrard-Arbutus-Marine'}
     ],
