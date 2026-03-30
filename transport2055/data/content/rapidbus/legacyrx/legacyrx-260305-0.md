@@ -21,3 +21,7 @@ The R4 is eliminated, as it is redundant with the [South Crosstown Skytrain](s-c
 ### R5
 
 The R5 is truncated west of Kootenay loop, and is retained due to provide rapid transit for the parts of Hastings that do not have rail in this plan, and to provide fast access to Simon Fraser University from the west. 
+
+### R6
+
+The R6 is upgraded and extended to serve the 152 St corridor, as well as provide a fast connection between and within various places within Coquitlam, such as Lougheed, the River District, and Coquitlam Central. 
