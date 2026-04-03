@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gondola",
+        "line": "SFU Gondola",
+        "color": "#cc2525",
+        "weight": 3
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [-122.9177507927962,49.25382072635861],[-122.91252825794955,49.27806481595883]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    }
+  ]
+}
