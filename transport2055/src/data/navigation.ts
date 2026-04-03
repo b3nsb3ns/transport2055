@@ -36,8 +36,7 @@ export const NAV_ITEMS = [
     children: [
       { id: 'fvx', label: 'Fraser Valley Express' },
       { id: 'wce', label: 'West Coast Express'},
-      { id: 'tcx', label: 'Tri-Cities Express'},
-      { id: 'sbx', label: 'South Burrard Express'}
+      { id: 'tcx', label: 'Tri-Cities Express'}
     ],
   },
   {
@@ -73,7 +72,8 @@ export const NAV_ITEMS = [
       { id: 'chilliwack', label: 'FVX Chilliwack'},
       { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
       { id: 'r6extend', label: 'R6 Extension'},
-      { id: 'tram', label: 'Tram Extension'}
+      { id: 'tram', label: 'Tram Extension'},
+      { id: 'sbx', label: 'South Burrard Express'}
     ],
   },
   {
