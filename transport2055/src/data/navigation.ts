@@ -36,7 +36,8 @@ export const NAV_ITEMS = [
     children: [
       { id: 'fvx', label: 'Fraser Valley Express' },
       { id: 'wce', label: 'West Coast Express'},
-      { id: 'tcx', label: 'Tri-Cities Express'}
+      { id: 'tcx', label: 'Tri-Cities Express'},
+      { id: 'nwx', label: 'New Westminster Express'}
     ],
   },
   {
