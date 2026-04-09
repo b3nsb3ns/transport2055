@@ -10,7 +10,7 @@ export const NAV_ITEMS = [
       { id: 'inlet', label: 'Inlet+Hastings Line'},
       { id: 's-crosstown', label: 'South Crosstown'},
       { id: 'kgb', label: 'King George Boulevard'},
-      { id: 's-central', label: 'South Central'}
+      
     ],
   },
   {
@@ -71,6 +71,7 @@ export const NAV_ITEMS = [
       { id: 'twx', label: 'Delta+Tsawwassen Express'},
       { id: 'kgbextend', label: 'KGB Extension' },
       { id: 'chilliwack', label: 'FVX Chilliwack'},
+      { id: 's-central', label: 'South Central SkyTrain'},
       { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
       { id: 'r6extend', label: 'R6 Extension'},
       { id: 'tram', label: 'Tram Extension'},
