@@ -2,14 +2,6 @@ const STORAGE_BASE_URL = import.meta.env.VITE_CLOUDFRONT_BASE_URL ?? ''
 
 export const TRANSIT_LAYERS = [
   {
-    id: 'brt',
-    // url: `${import.meta.env.BASE_URL}data/geojson/rapidbus.geojson`,
-    url: `${STORAGE_BASE_URL}/data/geojson/brt/brt-260206-0.geojson`,
-    hiddenByDefault: false,
-    label: 'BRT',
-    defaultColor: '#26bf1b',
-  },
-  {
     id: 'expressbus',
     // url: `${import.meta.env.BASE_URL}data/geojson/expressbus/expressbus-260204-0.geojson`,
     url: `${STORAGE_BASE_URL}/data/geojson/expressbus/expressbus-260204-0.geojson`,
@@ -23,6 +15,14 @@ export const TRANSIT_LAYERS = [
     url: `${STORAGE_BASE_URL}/data/geojson/rapidbus/rapidbus-260201-0.geojson`,
     hiddenByDefault: false,
     label: 'RapidBus',
+    defaultColor: '#26bf1b',
+  },
+  {
+    id: 'brt',
+    // url: `${import.meta.env.BASE_URL}data/geojson/brt/brt-260206-0.geojson`,
+    url: `${STORAGE_BASE_URL}/data/geojson/brt/brt-260206-0.geojson`,
+    hiddenByDefault: false,
+    label: 'BRT',
     defaultColor: '#26bf1b',
   },
   {

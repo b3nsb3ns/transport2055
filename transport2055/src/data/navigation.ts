@@ -10,23 +10,20 @@ export const NAV_ITEMS = [
       { id: 'inlet', label: 'Inlet+Hastings Line'},
       { id: 's-crosstown', label: 'South Crosstown'},
       { id: 'kgb', label: 'King George Boulevard'},
-      
     ],
   },
   {
-    id: 'rapidbus',
-    label: 'RapidBus',
-    contentId: 'rapidbus',
+    id: 'brt',
+    label: 'BRT',
+    contentId: 'brt',
     children: [
       { id: 'legacyrx', label: 'Legacy RapidBus'},
-      { id: 'surrey', label: 'Surrey East-West' },
-      { id: 'nvan', label: 'North Vancouver'},
-      { id: 'richmond', label: 'Richmond'},
-      { id: '6thave', label: 'New West Crosstown'},
-      { id: 'canadaway', label: 'Canada Way'},
-      { id: 'austin', label: 'Austin Ave'},
-      { id: 'downtown', label: 'Downtown'},
-      { id: 'marine', label: 'Burrard-Arbutus-Marine'}
+      { id: 'northshore', label: 'North Vancouver'},
+      { id: 'downtown', label: 'Downtown-Kingsway'},
+      { id: 'marine', label: 'Downtown-Arbutus-Marine'},
+      { id: 'drive', label: 'Commercial/Victoria-Richmond'},
+      { id: 'legacybrt', label: 'Langley-Haney Place'},
+      { id: 'legacybrt', label: 'Newton-White Rock'},
     ],
   },
   {
@@ -38,6 +35,18 @@ export const NAV_ITEMS = [
       { id: 'wce', label: 'West Coast Express'},
       { id: 'tcx', label: 'Tri-Cities Express'},
       { id: 'nwx', label: 'New Westminster Express'}
+    ],
+  },
+  {
+    id: 'rapidbus',
+    label: 'RapidBus',
+    contentId: 'rapidbus',
+    children: [
+      { id: 'legacyrx', label: 'Legacy RapidBus'},
+      { id: 'surrey', label: 'Surrey East-West' },
+      { id: 'richmond', label: 'Richmond'},
+      { id: 'canadaway', label: 'Canada Way'},
+      { id: 'austin', label: 'Austin Ave'},
     ],
   },
   {
@@ -57,7 +66,6 @@ export const NAV_ITEMS = [
     contentId: 'misc',
     children: [
       { id: 'bus', label: 'Bus' },
-      { id: 'brt', label: 'BRT'},
       { id: 'gondola', label: 'SkyBus' },
       { id: 'tram', label: 'Tram' },
       { id: 'test', label: 'Test Failure to Load' }
@@ -65,7 +73,7 @@ export const NAV_ITEMS = [
   },
   {
     id: 'bonus',
-    label: 'Bonus Phase 1',
+    label: 'Bonus Phases',
     contentId: 'bonus',
     children: [
       { id: 'twx', label: 'Delta+Tsawwassen Express'},
@@ -73,21 +81,12 @@ export const NAV_ITEMS = [
       { id: 'chilliwack', label: 'FVX Chilliwack'},
       { id: 's-central', label: 'South Central SkyTrain'},
       { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
-      { id: 'r6extend', label: 'R6 Extension'},
       { id: 'tram', label: 'Tram Extension'},
-      { id: 'sbx', label: 'South Burrard Express'}
-    ],
-  },
-  {
-    id: 'bonus2',
-    label: 'Bonus Phase 2',
-    contentId: 'bonus2',
-    children: [
+      { id: 'sbx', label: 'South Burrard Express'},
       { id: 'davie-pacificrail', label: 'Davie-Pacific Rail'},
-      { id: 'kensington', label: 'Hastings Skytrain Extension'},
       { id: 'cascades', label: 'Amtrak Cascades'},
       { id: 'ssx', label: 'Sea-to-Sky Express'},
       { id: 'oak-abrt', label: 'Oak Autonomous BRT'}
     ],
-  },
+  }
 ]
