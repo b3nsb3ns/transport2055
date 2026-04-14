@@ -76,11 +76,7 @@ export const NAV_ITEMS = [
     label: 'Bonus Phases',
     contentId: 'bonus',
     children: [
-      { id: 'twx', label: 'Delta+Tsawwassen Express'},
-      { id: 'kgbextend', label: 'KGB Extension' },
-      { id: 'chilliwack', label: 'FVX Chilliwack'},
       { id: 's-central', label: 'South Central SkyTrain'},
-      { id: 'millenniumextend', label: 'Millennium Maple Ridge Extension'},
       { id: 'tram', label: 'Tram Extension'},
       { id: 'sbx', label: 'South Burrard Express'},
       { id: 'davie-pacificrail', label: 'Davie-Pacific Rail'},

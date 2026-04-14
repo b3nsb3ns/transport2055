@@ -64,14 +64,6 @@ export const TRANSIT_LAYERS = [
     hiddenByDefault: true,
     label: 'Bonus',
     defaultColor: '#26bf1b',
-  },
-  {
-    id: 'bonus2',
-    // url: `${import.meta.env.BASE_URL}data/geojson/bonus2/bonus2-260302-0.geojson`,
-    url: `${STORAGE_BASE_URL}/data/geojson/bonus2/bonus2-260302-0.geojson`,
-    hiddenByDefault: true,
-    label: 'Bonus 2',
-    defaultColor: '#26bf1b',
   }
 ]
 
