@@ -2,13 +2,15 @@ import '../styles//Map.css'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import { TRANSIT_LAYERS } from '../data/maplayers.ts'
-import { useState, useEffect } from 'react'
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
+import { useState, useEffect, useContext } from 'react'
+import { MapContainer, TileLayer, GeoJSON, ZoomControl } from 'react-leaflet'
 import type { FeatureCollection, LineString } from 'geojson'
 import { useMap } from 'react-leaflet'
 import type { Map as LeafletMap } from 'leaflet'
 import { LayersControl } from 'react-leaflet'
 import { LayerGroup } from 'react-leaflet'
+import { ExpandedContext } from '../styles/ExpandedContext.ts'
+import type { ExpandedContextType } from '../styles/ExpandedContext.ts'
 
 interface MapProps {
   onSelectTopic: (topic: string) => void;
@@ -34,6 +36,9 @@ function TransitLayer({
     onSelectTopic: (topic: string) => void
     defaultColor: string
   }) {
+
+  const { toggleExpanded } = useContext<ExpandedContextType>(ExpandedContext)
+
   return (
     <LayerGroup>
       <GeoJSON
@@ -86,7 +91,9 @@ function TransitLayer({
               path.setStyle({ opacity: 0 })
             },
             click: () => {
-              if (lineId) onSelectTopic(lineId)
+              if (lineId) 
+                onSelectTopic(lineId)
+                toggleExpanded()
             },
           })
         }}
@@ -123,7 +130,10 @@ function Map({onSelectTopic, setMapRef}: MapProps) {
         zoom={10}
         scrollWheelZoom={true}
         style={{ height: '100%', width: '100%' }}
+        zoomControl={false}
         >
+
+        <ZoomControl position='bottomright' />
 
         <MapRefSetter setMapRef={setMapRef} />
 

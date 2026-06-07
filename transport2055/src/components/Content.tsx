@@ -2,7 +2,9 @@ import '../styles/Content.css'
 
 import { useMarkdown } from '../hooks/useMarkdown'
 import ReactMarkdown from 'react-markdown'
-// import rehypeRaw from 'rehype-raw'
+import { useContext } from 'react'
+import { ExpandedContext } from '../styles/ExpandedContext'
+import type { ExpandedContextType } from '../styles/ExpandedContext'
 
 interface ContentProps {
   contentId?: string;
@@ -10,7 +12,15 @@ interface ContentProps {
 }
 
 function Content({ contentId = "home", onSelectContent }: ContentProps) {
+  // const [isExpanded, setIsExpanded] = useState(true)
+  const { expanded, toggleCollapsed } = useContext<ExpandedContextType>(ExpandedContext)
+
+  // load markdown content from s3
   const { content, error } = useMarkdown(contentId)
+
+  // useEffect(() => {
+  //   setIsExpanded(true)
+  // }, [contentId])
 
   if (error) {
     return <div className="content error">Failed to load content.</div>
@@ -21,9 +31,8 @@ function Content({ contentId = "home", onSelectContent }: ContentProps) {
   }
 
   return (
-    <div className="content">
+    <div className={`content ${expanded ? 'expanded' : 'collapsed'}`}>
       <ReactMarkdown
-        // rehypePlugins={[rehypeRaw]}
         components={{
           // allow <a> tag to link to other markdown content
           a: ({href="", children}) => {
@@ -57,6 +66,9 @@ function Content({ contentId = "home", onSelectContent }: ContentProps) {
       >
         {content}
       </ReactMarkdown>
+      <button onClick={toggleCollapsed}>
+        🞪
+      </button>
     </div>
   )
 }

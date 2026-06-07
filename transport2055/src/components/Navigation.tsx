@@ -1,6 +1,8 @@
 import '../styles//Navigation.css'
-import { useState, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { NAV_ITEMS } from '../data/navigation.ts'
+import { ExpandedContext } from '../styles/ExpandedContext'
+import type { ExpandedContextType } from '../styles/ExpandedContext'
 
 interface NavigationProps {
   onSelectContentId: (id: string) => void;
@@ -8,62 +10,15 @@ interface NavigationProps {
 
 function Navigation({onSelectContentId}: NavigationProps) {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null)
-  const [isVisible, setIsVisible] = useState(true)
+  // const [isVisible, setIsVisible] = useState(true)
   const [navExpanded, setNavExpanded] = useState(true)
+
+  const { toggleExpanded } = useContext<ExpandedContextType>(ExpandedContext)
 
   const isOpen = (id: string) => openMenuId === id
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY
-    let accumulated = 0
-    let lastDirection: 'up' | 'down' | null = null
-
-    const HIDE_THRESHOLD = 80 // scroll down 80 pixels to hide nav bar
-    const SHOW_THRESHOLD = 60 // scroll up 60 pixels to make nav bar reappear
-    const SCROLL_DEADZONE = 8
-
-    const onScroll = () => {
-      const currentScrollY = window.scrollY
-      const delta = currentScrollY - lastScrollY
-
-      // Ignore tiny trackpad jitter
-      if (Math.abs(delta) < SCROLL_DEADZONE) return
-
-      const direction = delta > 0 ? 'down' : 'up'
-
-      // Reset accumulator if direction changes
-      if (direction !== lastDirection){
-        accumulated = 0
-        lastDirection = direction
-      }
-
-      accumulated += Math.abs(delta)
-
-      // Always show near top
-      if (currentScrollY < 10) {
-        setIsVisible(true)
-        setNavExpanded(true)
-        accumulated = 0
-      } else if (direction == 'down' && accumulated > HIDE_THRESHOLD) {
-        // scrolling down
-        setIsVisible(false)
-        setOpenMenuId(null) // close menus when hiding
-        accumulated = 0
-      } else if (direction == 'up' && accumulated > SHOW_THRESHOLD) {
-        // scrolling up
-        setIsVisible(true)
-        accumulated = 0
-      }
-
-      lastScrollY = currentScrollY
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    <nav className={`navigation ${isVisible ? 'visible' : 'hidden'}`}>
+    <nav className={`navigation ${navExpanded ? 'collapsed' : 'expanded'}`}>
       <div className="nav-brand">
         <button
           className="nav-toggle"
@@ -74,17 +29,20 @@ function Navigation({onSelectContentId}: NavigationProps) {
             setOpenMenuId(null)
           }}
         >
-          {navExpanded ? '☰' : '☰'}
+          ☰
         </button>
         <button
           className="site-logo"
-          onClick={() => onSelectContentId('home')}
+          onClick={() => {
+            onSelectContentId('home')
+            toggleExpanded()
+          }}
         >
           Transport 
           <img src={`${import.meta.env.BASE_URL}2055.svg`} alt="2055"></img>
         </button>
       </div>
-      <ul className={`nav-root ${navExpanded ? 'expanded' : 'collapsed'}`}>
+      <ul className={`nav-root ${navExpanded ? 'collapsed' : 'expanded'}`}>
         {NAV_ITEMS.map(item => (
           <li
             key={item.id}
@@ -96,7 +54,11 @@ function Navigation({onSelectContentId}: NavigationProps) {
               {/* Parent content button */}
               <button
                 className="nav-link"
-                onClick={() => onSelectContentId(item.contentId)}
+                onClick={() => {
+                  onSelectContentId(item.contentId)
+                  setNavExpanded(v => !v)
+                  toggleExpanded()
+                }}
               >
                 {item.label}
               </button>
@@ -125,6 +87,8 @@ function Navigation({onSelectContentId}: NavigationProps) {
                       onClick={() => {
                         onSelectContentId(child.id)
                         setOpenMenuId(null)
+                        setNavExpanded(v => !v)
+                        toggleExpanded()
                       }}
                     >
                       {child.label}

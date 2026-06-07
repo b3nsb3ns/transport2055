@@ -1,35 +1,66 @@
 .navigation {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 1rem;
+  /* right: 0; */
 
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5rem 1rem 1rem 1rem;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
 
   z-index: 1000;
 
-  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  /* transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s ease,
+    backdrop-filter 0.25s ease;
+  will-change: transform; */
   
-  background: black;
-  color: white;
+  background: transparent;
 }
 
+/* move panel */
+.navigation.expanded {
+  background: transparent;
+}
+.navigation.collapsed {
+  background: transparent;
+  border-bottom: none;
+  width: fit-content;
+  left: 1rem;
+  right: auto;
+  color: black;
+}
+
+/*open/close navigation panel
 .navigation.visible {
   transform: translateY(0);
 }
-
 .navigation.hidden {
   transform: translateY(-100%);
   pointer-events: none;
-}
+}*/
 
+/*top bar*/
 .nav-brand {
   margin-bottom: 0.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/*open/close menu button (☰)*/
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transform: translateY(-0.12em);
+  font-size: 1.3rem;
+  margin-right: 0.75rem;
+  opacity: 0.8;
+  transition: opacity 0.25s ease;
+  color: black;
 }
 
 .navigation .site-logo {
@@ -41,6 +72,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: black;
 }
 
 .site-logo img {
@@ -49,33 +81,43 @@
   transform: translateX(0.14em) translateY(0.12em);
 }
 
+.navigation button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+/*unordered list containing buttons of modes*/
 .nav-root {
   display: flex;
   gap: 1.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
 }
 
 .nav-root.collapsed {
   display: none;
+  background: transparent;
+  border-bottom: none;
 }
 
-.nav-root.expanded {
+/* .nav-root.expanded {
   display: flex;
-}
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+} */
 
 .nav-item {
   position: relative;
-}
-
-.nav-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  margin-left: 0.5rem;
-  transform: translateY(-0.12em);
 }
 
 .dropdown {
@@ -94,20 +136,11 @@
   }
 }
 
-.navigation button {
-  background: none;
-  border: none;
-  padding: 5px;
-  color: inherit;
-  cursor: pointer;
-  outline: none;
-}
-
 .nav-link {
   padding: 0.4rem 0.6rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.25s ease;
   position: relative;
 }
 
@@ -118,18 +151,11 @@
 .nav-caret {
   margin-left: 0.25rem;
   font-size: 0.8rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
 .nav-caret[aria-expanded="true"] {
   transform: rotate(180deg);
-}
-
-.nav-toggle {
-  font-size: 1.3rem;
-  margin-right: 0.75rem;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
 }
 
 .nav-toggle:hover {
