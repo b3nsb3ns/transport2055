@@ -5,6 +5,7 @@ export interface ExpandedContextType {
     expanded: boolean;
     toggleExpanded: () => void;
     toggleCollapsed: () => void;
+    toggleToOpposite: () => void;
 }
 
 // create context w/ a default value\
@@ -12,4 +13,5 @@ export const ExpandedContext = createContext<ExpandedContextType>({
     expanded: true,
     toggleExpanded: () => {},
     toggleCollapsed: () => {},
+    toggleToOpposite: () => {},
 });

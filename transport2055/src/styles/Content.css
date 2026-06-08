@@ -5,10 +5,7 @@
 
   width: 450px;
   max-width: calc(100vw - 2rem);
-
   max-height: calc(100vh - 6rem);
-
-  overflow-y: auto;
 
   background: rgba(0,0,0,0.85);
   color: white;
@@ -25,8 +22,8 @@
   float: left;
   
   transition: 
-    transform 1.5s ease
-    opacity 1.5s ease;
+    transform 0.7s ease,
+    opacity 0.7s ease;
 
   transform: translateX(0);
 }
@@ -53,29 +50,52 @@
   text-underline-offset: 2px;
 }
 
-/*content collapse/extend button*/
-.content button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
 .content button:hover {
-  opacity: 0.5;
+  opacity: 1.0;
 }
 
 /*content expanded*/
 .content.expanded {
-  color: inherit;
+  transform: translateX(0);
 }
 
 /*content collapsed*/
 .content.collapsed {
-  transform: translateX(calc(-100% - 2rem));
-  opacity: 0;
-  pointer-events: none;
+  transform: translateX(calc(-100%));
+}
+
+/*content collapse/extend button*/
+.collapse-button {
+  position: absolute;
+
+  top: 50%;
+  right: -28px;
+
+  transform: translateY(-50%);
+
+  width: 20px;
+  height: 80px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 0px 15px 15px 0px;
+
+  background: rgba(0,0,0,0.85);
+  color: white;
+  opacity: 0.5;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  z-index: 1001;
+}
+
+.collapse-button:focus {
+  outline: none;
+}
+
+.collapse-button:focus-visible {
+  outline: none;
 }

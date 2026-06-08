@@ -13,14 +13,10 @@ interface ContentProps {
 
 function Content({ contentId = "home", onSelectContent }: ContentProps) {
   // const [isExpanded, setIsExpanded] = useState(true)
-  const { expanded, toggleCollapsed } = useContext<ExpandedContextType>(ExpandedContext)
+  const { expanded, toggleToOpposite } = useContext<ExpandedContextType>(ExpandedContext)
 
   // load markdown content from s3
   const { content, error } = useMarkdown(contentId)
-
-  // useEffect(() => {
-  //   setIsExpanded(true)
-  // }, [contentId])
 
   if (error) {
     return <div className="content error">Failed to load content.</div>
@@ -32,6 +28,14 @@ function Content({ contentId = "home", onSelectContent }: ContentProps) {
 
   return (
     <div className={`content ${expanded ? 'expanded' : 'collapsed'}`}>
+      <button
+        className='collapse-button'
+        onClick={toggleToOpposite}
+        aria-label={expanded ? 'Collapse panel' : 'Expand panel'}
+      >
+        {expanded ? '❮' : '❯'}
+      </button>
+
       <ReactMarkdown
         components={{
           // allow <a> tag to link to other markdown content
@@ -66,9 +70,6 @@ function Content({ contentId = "home", onSelectContent }: ContentProps) {
       >
         {content}
       </ReactMarkdown>
-      <button onClick={toggleCollapsed}>
-        🞪
-      </button>
     </div>
   )
 }

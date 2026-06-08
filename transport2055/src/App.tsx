@@ -22,18 +22,26 @@ function App() {
 
   const [expanded, setExpanded] = useState(true)
 
+  // expand content
   const toggleExpanded = () => {
     setExpanded(true)
   }
 
+  // collapse content
   const toggleCollapsed = () => {
     setExpanded(false)
+  }
+
+  // toggle content panel
+  const toggleToOpposite = () => {
+    setExpanded(current => (current === true ? false : true))
   }
 
   const providerValue: ExpandedContextType = {
     expanded: expanded,
     toggleExpanded: toggleExpanded,
-    toggleCollapsed: toggleCollapsed
+    toggleCollapsed: toggleCollapsed,
+    toggleToOpposite: toggleToOpposite
   }
 
   // set id and push state to browser history
@@ -64,25 +72,11 @@ function App() {
       <ExpandedContext.Provider value={providerValue}>
         <div className='app-shell'>
 
-          {/* <MapPanel
-              isVisible={isMapVisible}
-              onToggle={() => setIsMapVisible(v => !v)}
-              onSelectTopic={handleSelectContent}
-          /> */}
-
           <MapView onSelectTopic={handleSelectContent} />
 
           <Content contentId={selectedTopic} onSelectContent={handleSelectContent} />
 
           <Navigation onSelectContentId={handleSelectContent} />
-          
-          {/* <main className="main-layout">
-            <MapPanel
-              isVisible={isMapVisible}
-              onToggle={() => setIsMapVisible(v => !v)}
-              onSelectTopic={handleSelectContent}
-            />
-          </main> */}
 
         </div>
       </ExpandedContext.Provider>
