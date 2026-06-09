@@ -35,41 +35,42 @@ function Content({ contentId = "home", onSelectContent }: ContentProps) {
       >
         {expanded ? '❮' : '❯'}
       </button>
+      <div className='content-scroll'>
+        <ReactMarkdown
+          components={{
+            // allow <a> tag to link to other markdown content
+            a: ({href="", children}) => {
+              const isExternal =
+                href.startsWith("http://") ||
+                href.startsWith("https://") ||
+                href.startsWith("mailto:")
 
-      <ReactMarkdown
-        components={{
-          // allow <a> tag to link to other markdown content
-          a: ({href="", children}) => {
-            const isExternal =
-              href.startsWith("http://") ||
-              href.startsWith("https://") ||
-              href.startsWith("mailto:")
+              if (!isExternal) {
+                return (
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      onSelectContent?.(href)
+                    }}
+                  >
+                    {children}
+                  </a>
+                )
+              }
 
-            if (!isExternal) {
+              // normal links
               return (
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    onSelectContent?.(href)
-                  }}
-                >
+                <a href={href} target="_blank" rel="noopener noreferrer">
                   {children}
                 </a>
               )
             }
-
-            // normal links
-            return (
-              <a href={href} target="_blank" rel="noopener noreferrer">
-                {children}
-              </a>
-            )
-          }
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </div>
     </div>
   )
 }

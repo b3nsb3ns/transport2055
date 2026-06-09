@@ -18,7 +18,10 @@ function Navigation({onSelectContentId}: NavigationProps) {
   const isOpen = (id: string) => openMenuId === id
 
   return (
-    <nav className={`navigation ${navExpanded ? 'collapsed' : 'expanded'}`}>
+    <nav className={`navigation ${navExpanded ? 'collapsed' : 'expanded'}`}
+      onMouseEnter={() => setNavExpanded(false)} // set navigation panel to expanded
+      onMouseLeave={() => setNavExpanded(true)} // set navigation panel to collapsed
+    >
       <div className="nav-brand">
         <button
           className="nav-toggle"
