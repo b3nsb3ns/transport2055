@@ -37,9 +37,4 @@ jobs:
 
           aws s3 sync data s3://transport-2055-project/data --size-only
 
-      # Invalidate Cloudfront Cache when new data detected
-      - name: Invalidate Cloudfront cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/data/*"
+      
