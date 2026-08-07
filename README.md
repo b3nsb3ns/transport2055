@@ -1,5 +1,7 @@
 # Transport 2055
 
+![Link to App](https://b3nsb3ns.github.io/transport2055/?page=home)
+
 ## Frontend Flow Diagram
 
 This is the general flow graph for the frontend, where state management is handled in App.tsx. 
