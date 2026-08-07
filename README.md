@@ -1,6 +1,6 @@
 # Transport 2055
 
-![Link to App](https://b3nsb3ns.github.io/transport2055/?page=home)
+[Link to App](https://b3nsb3ns.github.io/transport2055/?page=home)
 
 ## Frontend Flow Diagram
 
